@@ -1,30 +1,23 @@
 package isogram
 
-import(
-	"errors";
-	"unicode";
+import (
+	"unicode"
 )
 
-// CHECKS IF PARAMETER STRING IS AN ISOGRAM
-func IsogramCheck(word string) (bool, int, error) {
+//TAKES INPUT STRING AND RETURNS A BOOL
+func IsogramCheck(word string) bool {
 	if word == "" {
-		err := errors.New("Please input a string!")
-		return false, -1, err
+		return true
 	}
-
-	// CREATE EMPTY MAP DECLARING TYPES 
 	dict := make(map[rune]bool)
-
-	// ITERATE OVER INPUT STRING
 	for _, char := range word {
-		// FORCE EVERYTHING TO LOWERCASE
-		char := unicode.ToLower(char)
-		// IF THE CHAR IS FOUND IN MAP
-		if _, found := dict[char]; found {
-			/* 
-			IF THE CHAR IS AN ALPHABETICAL CHAR
-			*/
+		_, found := dict[unicode.ToUpper(char)]
+		if found {
+			return false
+		}
+		if unicode.IsLetter(char) {
+			dict[unicode.ToUpper(char)] = false
 		}
 	}
-
+	return true
 }

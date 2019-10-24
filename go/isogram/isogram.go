@@ -5,7 +5,7 @@ import (
 )
 
 //TAKES INPUT STRING AND RETURNS A BOOL
-func IsogramCheck(word string) bool {
+func IsIsogram(word string) bool {
 	if word == "" {
 		return true
 	}

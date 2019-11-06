@@ -6,18 +6,13 @@ func Reverse(str string) string {
 	if str == "" {
 		return ""
 	}
-	// make array of runes (chars)
-	chars := []rune(str)
 
-	// loop through chars array of str's & swap chars
-	max_len_index := len(chars)
+	reverse_str := ""
 
-	for i := 0; i < max_len_index; i += 1 {
-		for j := max_len_index; j >= 0; j -= 1 {
-			chars[i], chars[j] = chars[j], chars[i]
-		}
+	for _, char := range str {
+		reverse_str = string(char) + reverse_str
 	}
 
-	return string(chars)
+	return string(reverse_str)
 
 }
